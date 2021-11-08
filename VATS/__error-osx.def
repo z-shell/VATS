@@ -1,0 +1,156 @@
+# -*- Mode: sh; sh-indentation: 4; indent-tabs-mode: nil; sh-basic-offset: 4; -*-
+# vim:ft=zsh:sw=4:sts=4:et
+
+# OS X errors
+
+typeset -ga errors1
+errors1+=(
+    # OS X related error
+    # Trailing functions in stack trace are all /usr/lib/system/*
+    "* / zsh_main / * / setupvals / * / getpwuid / *"
+    "zsh_main / * / setupvals / * / getpwuid / *"
+
+    # OS X related error
+    "* / zsh_main / * / setupvals / * / gettimeofday / *"
+    "zsh_main / * / setupvals / * / gettimeofday / *"
+
+    # OS X related error
+    # A memory leak in strtod_l
+    "* / (*typeset*|lexconstant) / * / strtod_l / *"
+    "(*typeset*|lexconstant) / * / strtod_l / *"
+
+    # OS X related error
+    # Memory leak in the ptsname
+    "* / exe* / * / ptsname / *"
+    "exe* / * / ptsname / *"
+
+    # OS X related error
+    # getlogin is a OS X call
+    "* / zsh_main / * / setupvals / * / createparamtable / * / getlogin / *"
+    "zsh_main / * / setupvals / * / createparamtable / * / getlogin / *"
+
+    # OS X related error
+    # mkstemp is a OS X call
+    "* / (gettemp*|exe*) / * / (mkstemp|_mktemp) / *"
+    "(gettemp*|exe*) / * / (mkstemp|_mktemp) / *"
+
+    # OS X related error
+    # a leak in system's ttyname
+    "* / zsh_main / * / ttyname / *"
+    "zsh_main / * / ttyname / *"
+
+    # OS X related error
+    # a general definition for leaks in fprintf
+    "* / fprintf* / * / v*printf* / *"
+    "fprintf* / * / v*printf* / *"
+
+    # OS X related error
+    # a general definition for leaks in sprintf
+    "* / *sprintf* / * / *v*printf* / *"
+    "*sprintf* / * / *v*printf* / *"
+
+    # OS X related error
+    # Trailing calls are from libsystem*, libobjc, etc
+    "* / (paramsubst|exe*) / * / zfork / * / fork / *"
+    "(paramsubst|exe*) / * / zfork / * / fork / *"
+
+    # OS X related error (implementation of stdlibc)
+    "* / fgetc / * / (calloc|malloc|?alloc_zone_?alloc|*reallocate*)"
+
+    # OS X related error
+    "* / (eval|zsh_main|exe*) / * / (currentlocale|setlocale) / *"
+    "(eval|zsh_main|exe*) / * / (currentlocale|setlocale) / *"
+
+    # OS X related error (implementation of getlogin_basic)
+    "* / getlogin_basic / *"
+    "getlogin_basic / *"
+
+    # OS X related error
+    # Memory leak in the dlopen system's library call
+    "* / *load_module / * / dlopen / *"
+    "*load_module / * / dlopen / *"
+
+    #
+    # Internal OS X leaks
+    #
+
+    # OS X related error
+    "* / libSystem_initializer / *"
+
+    # OS X related error
+    "* / dispatch_once_f / * / (calloc|malloc|?alloc_zone_?alloc)"
+    "dispatch_once_f / * / (calloc|malloc|?alloc_zone_?alloc)"
+    "* / dispatch_once_f / * / (calloc|malloc|?alloc_zone_?alloc) / * / (calloc|malloc|?alloc_zone_?alloc)"
+    "dispatch_once_f / * / (calloc|malloc|?alloc_zone_?alloc) / * / (calloc|malloc|?alloc_zone_?alloc)"
+
+    # OS X related error
+    "* / __collate_load_tables / * / (calloc|malloc|?alloc_zone_?alloc)"
+
+    # OS X related error
+    "* / map_images / *"
+    "map_images / *"
+
+    # OS X related error
+    "* / si_user_by* / *"
+    "si_user_by* / *"
+
+    # OS X related error
+    "* / xpc_pipe_routine / *"
+    "xpc_pipe_routine / *"
+
+    # OS X related error
+    "* / _os_object_init / *"
+    "_os_object_init / *"
+
+    # OS X related error
+    "* / _objc_init / *"
+    "_objc_init / *"
+
+    # OS X related error
+    "* / _dyld_objc_notify_register / *"
+    "_dyld_objc_notify_register / *"
+
+    # OS X related error
+    "* / _dyld_objc_notify_register / *"
+
+    # OS X related error
+    "* / cache_fill / * / (calloc|malloc|?alloc_zone_?alloc|*reallocate*) / *"
+    "cache_fill / * / (calloc|malloc|?alloc_zone_?alloc|*reallocate*) / *"
+
+    # OS X related error
+    "* / ___notify_lib_init_block_invoke / *"
+    "___notify_lib_init_block_invoke / *"
+    "* / ___notify_lib_init_block_invoke"
+    "___notify_lib_init_block_invoke"
+
+    # OS X related error
+    "* / *xpc_interface_routine* / *"
+    "*xpc_interface_routine* / *"
+
+    # OS X related error
+    "* / bootstrap_look_up* / *"
+
+    # OS X related error
+    "* / libdispatch_init / *"
+    "libdispatch_init / *"
+
+    # OS X related error
+    "* / _dispatch_client_callout / *"
+    "_dispatch_client_callout / *"
+
+    # OS X related error
+    "* / si_module_with_name / *"
+    "si_module_with_name / *"
+
+    #
+    # db_gdbm
+    #
+
+    # Weird gdbm error:
+    # Syscall param write(buf) points to uninitialised byte(s)
+    "* / bin_eval / eval / execode / * / bin_ztie / * / --BLOCK-- / * / eval / * / bin_ztie / * / write"
+
+    # Other instance of the above
+    # Syscall param write(buf) points to uninitialised byte(s)
+    " * / execcmd_exec / addvars / assignaparam / * / gdbmhashsetfn / * / --BLOCK-- / * / addvars / gdbmhashsetfn / * / write"
+)

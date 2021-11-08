@@ -1,0 +1,57 @@
+# -*- Mode: sh; sh-indentation: 4; indent-tabs-mode: nil; sh-basic-offset: 4; -*-
+# vim:ft=zsh:sw=4:sts=4:et
+
+# General errors with origin in Zsh's code specifics
+
+typeset -ga errors1
+errors1+=(
+    # addvars is a no leak, it creates vars to be collected by the OS
+    "* / (eval|zsh_main|exe*) / * / addvars / * / ztrdup / *"
+    "(eval|zsh_main|exe*) / * / addvars / * / ztrdup / *"
+
+    # Structures for hooks, to be collected by OS
+    "* / zsh_main / * / addhookdefs / * / addhookdef / * / zalloc / *"
+    "zsh_main / * / addhookdefs / * / addhookdef / * / zalloc / *"
+
+    # Creation of param table, to be collected by OS
+    "* / (eval|zsh_main|exe*) / * / setupvals / * / createparamtable / * / zalloc / *"
+    "(eval|zsh_main|exe*) / * / setupvals / * / createparamtable / * / zalloc / *"
+
+    # The example module
+    "* / bin_example / *"
+    "bin_example / *"
+
+    # Autofeatures that use structures to be collected by the OS
+    "* / (enables_|setfeatureenables|autofeatures) / * / (calloc|malloc|?alloc_zone_?alloc)"
+    "(enables_|setfeatureenables|autofeatures) / * / (calloc|malloc|?alloc_zone_?alloc)"
+
+    # zle.so - an initialization of structures to be collected by the OS
+    "* / init_keymaps / *"
+    "init_keymaps / *"
+
+    # An initialization of structures in various modules to be
+    # collected by the OS
+    "* / *load_module / * / newhashtable / *"
+    "*load_module / * / newhashtable / *"
+
+    # An assumed initialization of structures in various modules to be
+    # collected by the OS
+    "* / *load_module / * / (calloc|malloc|?alloc_zone_?alloc)"
+    "*load_module / * / (calloc|malloc|?alloc_zone_?alloc)"
+
+    # Memory leak in the gdbm_errno_location
+    "* / bin_ztie / * / gdbm_errno_location / *"
+    "bin_ztie / * / gdbm_errno_location / *"
+
+    # A06
+    "* / zsh_main / init_io / *"
+    "zsh_main / init_io / *"
+
+    # The non-cleanup situation with temporary files in a subshell
+    "* / prefork / * / addfilelist / *"
+    "prefork / * / addfilelist / *"
+
+    # "Process terminating with default action of signal 13 (SIGPIPE)"
+    "* / bin_print / * / *GLIBC* / * / *write*"
+    "bin_print / * / *GLIBC* / * / *write*"
+)

@@ -1,0 +1,21 @@
+diff --git a/Test/Makefile.in b/Test/Makefile.in
+index 083df4942..704ebc1f7 100644
+--- a/Test/Makefile.in
++++ b/Test/Makefile.in
+@@ -35,6 +35,7 @@ VPATH           = @srcdir@
+ sdir            = @srcdir@
+ sdir_top        = @top_srcdir@
+ INSTALL         = @INSTALL@
++VLGRND 		= $(VALGRIND:1=v)
+
+ @DEFS_MK@
+
+@@ -49,7 +50,7 @@ check test:
+            do echo $$f; done`" \
+ 	 ZTST_srcdir="$(sdir)" \
+ 	 ZTST_exe=$(dir_top)/Src/zsh@EXEEXT@ \
+-	 $(dir_top)/Src/zsh@EXEEXT@ +Z -f $(sdir)/runtests.zsh; then \
++	 $(dir_top)/Src/zsh@EXEEXT@ +Z -f $(sdir)/$(VLGRND)runtests.zsh; then \
+ 	 stat=0; \
+ 	else \
+ 	 stat=1; \
