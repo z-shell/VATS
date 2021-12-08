@@ -1,16 +1,4 @@
-# `VALGRID-AUTOMATIC-TEST-SUITE` (VATS)
-
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-- [Introduction](#introduction)
-  - [Error Definitions](#error-definitions)
-  - [Integrating With Project](#integrating-with-project)
-  - [Basic Test-Configuration](#basic-test-configuration)
-  - [Remaining Test-Configuration](#remaining-test-configuration)
-  - [The vtest.conf pasted](#the-vtestconf-pasted)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+# Valgrid automatic test suite (VATS)
 
 ## Introduction
 
