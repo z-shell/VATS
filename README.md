@@ -1,4 +1,4 @@
-# Valgrid automatic test suite (VATS)
+# Valgrind automatic test suite (VATS)
 
 ## Introduction
 
