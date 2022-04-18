@@ -1,7 +1,13 @@
-# Valgrind automatic test suite (VATS)
+<table style="width:100%;height:auto">
+<tr><td align="center">
+<a title="ZI" target="_self" href="https://github.com/z-shell/zi/">
+<h2><img align="center" style="width:60px;height:auto" src="https://github.com/z-shell/zi/raw/main/docs/images/logo.svg" alt="ZI Logo" /></a>
+❮ ZI ❯ - VATS </h2><h3> Valgrind automatic test suite </h3>
 
-## Introduction
+  <a href="https://asciinema.org/a/488213" target="_blank"><img style="width:90%;height:auto" src="https://asciinema.org/a/488213.svg" /></a>
 
+</td></tr></table>
+ 
 Runs sequence of tests, preceded by `valgrind` call, with a command and arguments taken from file `vtest.conf`.
 The arguments are dynamic because the `vtest.conf` entry can look like this:
 
